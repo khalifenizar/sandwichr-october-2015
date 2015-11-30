@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  # Use all the routes except the ones that show the form
+  resources :sandwiches, except: [ :new, :edit ]
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
