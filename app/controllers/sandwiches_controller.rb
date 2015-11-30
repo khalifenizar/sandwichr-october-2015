@@ -37,6 +37,22 @@ class SandwichesController < ApplicationController
     end
   end
 
+  def destroy
+    my_sandwich = Sandwich.find_by(id: params[:id])
+
+    if my_sandwich.nil?
+      error = { :error => "Sandwich not found" }
+
+      render json: error, status: 404
+    else
+
+      # Delete the sandwich
+      my_sandwich.destroy
+
+      render json: my_sandwich
+    end
+  end
+
 
   private
 
