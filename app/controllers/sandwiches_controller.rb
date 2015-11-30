@@ -21,6 +21,22 @@ class SandwichesController < ApplicationController
     end
   end
 
+  def update
+    my_sandwich = Sandwich.find_by(id: params[:id])
+
+    if my_sandwich.nil?
+      error = { :error => "Sandwich not found" }
+
+      render json: error, status: 404
+    else
+
+      # Update the sandwich
+      my_sandwich.update(sandwich_params)
+
+      render json: my_sandwich
+    end
+  end
+
 
   private
 
